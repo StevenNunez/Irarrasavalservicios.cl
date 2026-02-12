@@ -362,7 +362,7 @@ h4 {
 .footer {
   background: var(--bg-darker);
   padding: 2rem 0;
-  border-top: 1rem solid var(--bg-card);
+
   text-align: center;
   color: var(--text-muted);
   font-size: 0.875rem;

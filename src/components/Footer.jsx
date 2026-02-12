@@ -12,7 +12,10 @@ export const Footer = () => {
                     </p>
                 </div>
                 <div style={{ borderTop: '1px solid rgba(255,255,255,0.05)', paddingTop: '2rem' }}>
-                    <p>&copy; {new Date().getFullYear()} Irarrázaval Servicios SpA. Todos los derechos reservados.</p>
+                    <p>
+                        &copy; {new Date().getFullYear()} Irarrázaval Servicios SpA. Todos los derechos reservados.
+                        {" "}Desarrollado por <a href="https://www.teolabs.app/" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--primary-color)', textDecoration: 'none', fontWeight: '600' }}>Teo Labs</a>
+                    </p>
                 </div>
             </div>
         </footer>

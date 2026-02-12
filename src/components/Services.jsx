@@ -14,14 +14,14 @@ const services = [
         desc: "Ingeniería de automatización y control para optimizar procesos productivos."
     },
     {
+        icon: <Building2 size={32} />,
+        title: "Construcción y Obras Civiles",
+        desc: "Construcción y edificación de obras civiles menores e infraestructuras."
+    },
+    {
         icon: <Wrench size={32} />,
         title: "Reparación de Equipos",
         desc: "Diagnóstico y reparación de equipos eléctricos industriales críticos."
-    },
-    {
-        icon: <Building2 size={32} />,
-        title: "Obras Civiles",
-        desc: "Construcción y edificación de obras civiles menores e infraestructuras."
     },
     {
         icon: <Hammer size={32} />,
