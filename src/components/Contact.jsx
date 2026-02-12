@@ -71,7 +71,7 @@ export const Contact = () => {
                             <MapPin className="contact-icon" size={24} />
                             <div>
                                 <h4 style={{ marginBottom: '0.25rem' }}>Ubicación</h4>
-                                <p style={{ color: 'var(--text-muted)' }}>Marta Elba Miranda 1450, Citae</p>
+                                <p style={{ color: 'var(--text-muted)' }}>Pasaje Marta Elba Miranda 1450</p>
                                 <p style={{ color: 'var(--text-muted)' }}>Coquimbo, IV Región</p>
                             </div>
                         </div>
@@ -81,6 +81,8 @@ export const Contact = () => {
                             <div>
                                 <h4 style={{ marginBottom: '0.25rem' }}>Teléfono</h4>
                                 <a href="tel:+56954658390" style={{ color: 'var(--text-muted)' }}>+56 9 5465 8390</a>
+                                <br />
+                                <a href="tel:+56969168274" style={{ color: 'var(--text-muted)' }}>+56 9 6916 8274</a>
                             </div>
                         </div>
 
