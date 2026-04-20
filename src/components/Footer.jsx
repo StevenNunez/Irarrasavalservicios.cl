@@ -1,5 +1,6 @@
 import React from 'react';
 import { Logo } from './Logo';
+import InteractiveLogo from './InteractiveLogo';
 
 export const Footer = () => {
     return (
@@ -12,9 +13,16 @@ export const Footer = () => {
                     </p>
                 </div>
                 <div style={{ borderTop: '1px solid rgba(255,255,255,0.05)', paddingTop: '2rem' }}>
-                    <p>
-                        &copy; {new Date().getFullYear()} Irarrázaval Servicios SpA. Todos los derechos reservados.
-                        {" "}Desarrollado por <a href="https://www.teolabs.app/" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--primary-color)', textDecoration: 'none', fontWeight: '600' }}>Teo Labs</a>
+                    <p className="flex items-center justify-center gap-2 flex-wrap">
+                        <span>&copy; {new Date().getFullYear()} Irarrázaval Servicios SpA. Todos los derechos reservados.</span>
+                        <span className="hidden sm:inline">|</span>
+                        <span className="flex items-center gap-1">
+                            Desarrollado por 
+                            <a href="https://www.teolabs.app" target="_blank" rel="noopener noreferrer" className="no-underline hover:opacity-80 transition-opacity">
+                                <InteractiveLogo variant="footer-small" className="text-[14px]" />
+                            </a>
+                            ®
+                        </span>
                     </p>
                 </div>
             </div>

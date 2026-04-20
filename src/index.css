@@ -388,3 +388,38 @@ h4 {
 
   /* Simplified mobile for now */
 }
+
+/* --- Added Utilities & Component Styles --- */
+
+.teo-gradient-text {
+  background: linear-gradient(to right, #2563eb, #a855f7, #22c55e);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.space-normal { width: 0.2em; }
+.space-giant { width: 0.3em; }
+
+/* Flex and utilities */
+.flex { display: flex; }
+.justify-center { justify-content: center; }
+.flex-wrap { flex-wrap: wrap; }
+.items-center { align-items: center; }
+.gap-1 { gap: 0.25rem; }
+.select-none { user-select: none; }
+.inline-block { display: inline-block; }
+.relative { position: relative; }
+.cursor-default { cursor: default; }
+.hidden { display: none; }
+.no-underline { text-decoration: none; }
+.text-\[14px\] { font-size: 14px; }
+.transition-opacity { transition: opacity 0.3s; }
+
+@media (min-width: 640px) {
+  .sm\:inline { display: inline; }
+}
+
+.hover\:opacity-80:hover {
+  opacity: 0.8;
+}

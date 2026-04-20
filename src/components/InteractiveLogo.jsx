@@ -1,0 +1,106 @@
+'use client';
+
+import React, { useRef, useState } from 'react';
+import { cn } from '../lib/utils';
+
+/**
+ * InteractiveLogo Component para Teo Labs
+ * 
+ * Un componente reutilizable que crea un efecto de texto interactivo donde cada letra
+ * reacciona a la posición del mouse con movimientos y efectos visuales.
+ * 
+ * Variantes:
+ * - 'header': Texto con gradiente y movimiento sutil (ideal para navegación).
+ * - 'footer-small': Versión pequeña con gradiente (ideal para textos legales/copyright).
+ * - 'footer-giant': Texto gigante con efecto de aberración cromática (ideal para secciones de impacto).
+ */
+export default function InteractiveLogo({ 
+  text = 'Teo Labs', 
+  className, 
+  variant = 'header' 
+}) {
+  return (
+    <span className={cn("flex select-none", className)}>
+      {text.split('').map((char, index) => (
+        <AnimatedLetter 
+          key={index} 
+          char={char} 
+          index={index} 
+          variant={variant} 
+        />
+      ))}
+    </span>
+  );
+}
+
+function AnimatedLetter({ 
+  char, 
+  index, 
+  variant 
+}) {
+  const [isHovered, setIsHovered] = useState(false);
+  const [mouseX, setMouseX] = useState(0);
+  const letterRef = useRef(null);
+
+  const handleMouseMove = (e) => {
+    if (letterRef.current) {
+      const rect = letterRef.current.getBoundingClientRect();
+      const x = (e.clientX - rect.left) / rect.width - 0.5;
+      setMouseX(x);
+    }
+  };
+
+  if (char === ' ') {
+    return <span className={cn("inline-block", variant === 'footer-giant' ? "space-giant" : "space-normal")} />;
+  }
+
+  const getStyle = () => {
+    // Lógica de transformación basada en la variante
+    const intensity = variant === 'footer-giant' ? 8 : 4;
+    const skew = variant === 'footer-giant' ? 15 : 10;
+    const transform = isHovered 
+      ? `translateY(${Math.sin(index * 0.5 + mouseX * 3) * intensity}px) skewX(${mouseX * skew}deg)`
+      : 'translateY(0) skewX(0)';
+
+    const style = {
+      transform,
+      transition: isHovered ? 'transform 0.1s ease-out' : 'transform 0.3s ease-out',
+      fontWeight: isHovered || variant === 'footer-giant' ? '700' : '600',
+    };
+
+    // Lógica de sombra (Aberración cromática solo para la versión gigante)
+    if (variant === 'footer-giant') {
+      if (isHovered) {
+        style.textShadow = `${-4 - mouseX * 10}px 0 0 rgba(255, 0, 0, 0.6), ${4 - mouseX * 10}px 0 0 rgba(0, 255, 255, 0.6)`;
+      } else {
+        style.textShadow = '-3px 0 0 rgba(255, 0, 0, 0.5), 3px 0 0 rgba(0, 255, 255, 0.5)';
+      }
+    }
+
+    return style;
+  };
+
+  const getClassName = () => {
+    if (variant === 'footer-giant') {
+      return "inline-block relative cursor-default";
+    }
+    // Clases para el gradiente de Teo Labs
+    return "inline-block relative cursor-default teo-gradient-text";
+  };
+
+  return (
+    <span
+      ref={letterRef}
+      className={getClassName()}
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => {
+        setIsHovered(false);
+        setMouseX(0);
+      }}
+      onMouseMove={handleMouseMove}
+      style={getStyle()}
+    >
+      {char}
+    </span>
+  );
+}
